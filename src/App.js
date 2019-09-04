@@ -5,43 +5,47 @@ import AddItem from "./AddItem";
 
 
 function App(props) {
+
+  // Data base
   const [list, setList] = useState([
-  // {id:0,
-  //   text:'random content',
-  //   nested:[{
-  //     id:0,
-  //     text:'nested content'
-  //   },
-  //   {
-  //     id:1,
-  //     text:'second nested content',
-  //     nested:[{
-  //       id:0,
-  //       text:'nested content'
-  //     },
-  //     {
-  //       id:1,
-  //       text:'second nested content',
+  {id:0,
+    text:'random content',
+    nested:[{
+      id:0,
+      text:'nested content'
+    },
+    {
+      id:1,
+      text:'second nested content',
+      nested:[{
+        id:0,
+        text:'nested content'
+      },
+      {
+        id:1,
+        text:'second nested content',
         
-  //     }
-  //   ]
+      }
+    ]
   
-  //   }
-  // ]
+    }
+  ]
 
 
-  // },
+  },
 
 
   ]);
 
-
+// Function to move elevemnts up and down array
   const move = (array, from, to,) => {
     const def = array[from];
     array[from] = array[to];
     array[to] = def;
     return array
 }
+
+
 
   const addItem = text => {
     let currentIds = list.map(data => data.id);
@@ -61,6 +65,9 @@ function App(props) {
   };
 
 
+
+
+  // Move elements in array up and down
 const Up = (id, array) => {
   const newList = [...list]
   // setList(newList)

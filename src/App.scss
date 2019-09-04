@@ -1,15 +1,11 @@
-.App {
+.app {
   font-family: arial;
-  text-align: center;
+  
+  
 
   li{
+    
     list-style: none;
   }
-  .list-item{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border: 1px solid gray;
-    padding: 5px 10px;
-  }
+ 
 }
