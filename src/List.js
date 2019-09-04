@@ -31,7 +31,9 @@ return (
 
 {form ? <AddItem /> : ""}
 </ul>
-{Array.isArray(item.nested) ? item.nested.map((item, index) => (
+{Array.
+  
+  isArray(item.nested) ? item.nested.map((item, index) => (
           <div key={index}>
           <List
             key={index}
