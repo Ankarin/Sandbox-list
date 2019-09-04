@@ -5,11 +5,8 @@ export default function List({ item, index, id, removeItem, Up, Down, list }) {
     // Toggle form for adding new list item
   const [form, setForm] = useState(false);
 
-  const [nestedList, setNestedList] = useState([
-
-
-  ])
-
+  const [nestedList, setNestedList] = useState([])
+// console.log(list[id].nested[id])
   const move = (array, from, to,) => {
     const def = array[from];
     array[from] = array[to];
@@ -56,7 +53,7 @@ const DownNested = (id, array) => {
 
 
 
-console.log(nestedList.map(a=>a.text))
+// console.log(nestedList.map(a=>a.text))
 return (
     <div >
       
@@ -76,22 +73,24 @@ return (
      
 <ul> 
 
+{nestedList.length>0 ? nestedList.map((item, index)=> 
+  <li key={item.id}>
+ <List 
  
+ item={item} 
+ index={item.id} 
+ id={item.id}
+ indexof={list.indexOf(item)}
+  removeItem={removeNestedItem} 
+  Up={UpNested}
+ Down={DownNested} 
+   list={nestedList}/> </li>  ):null}
 
 
 {form ? <AddNestedItem  addNestedItem={addNestedItem}/> : ""}
 </ul>
 
-{nestedList.length>0 ? nestedList.map((item, index)=> 
-   <ul key={index}>
-  <List 
-  item={item} 
-  index={index} 
-  id={nestedList.indexOf(item)}
-   removeItem={removeNestedItem} 
-   Up={UpNested}
-  Down={DownNested} 
-    list={nestedList}/> </ul>  ):null}
+
 
 
 

@@ -8,15 +8,17 @@ function App(props) {
 
   // Data base
   const [list, setList] = useState([
-  {id:0,
-    text:'random content',
-    nested:[{
-      text:'nested content'
-    }
+//   {id:0,
+//     text:'random content',
+//     nested:[
+//       {
+// id:0,
+//       text:'nested content'
+//     }
 
-    ]
+//     ]
 
-  },
+//   },
 
 
   ]);
@@ -71,11 +73,12 @@ const Down = (id, array) => {
   return (
     <div className="app">
       <div className="list-item">
+     
         {list.map((item, index) => (
-          <div key={index}>
+          <div key={item.id}>
           <List
-            key={index}
-            index={index}
+            key={item.id}
+            index={item.id}
             id={list.indexOf(item)}
             item={item}
             removeItem={removeItem}
@@ -85,10 +88,10 @@ const Down = (id, array) => {
             addItem={addItem}
             
           /> 
-          {/* <AddItem addItem={addItem} nestedList={nestedList} /> */}
+          
           </div>
         ))}
-        <br />
+        
         <AddItem addItem={addItem} />
 
         
