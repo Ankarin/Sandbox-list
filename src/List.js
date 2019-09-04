@@ -1,12 +1,62 @@
 import React, { useState } from "react";
-import AddItem from "./AddItem";
+import AddNestedItem from "./AddNestedItem";
 import './App.scss'
 export default function List({ item, index, id, removeItem, Up, Down, list }) {
+    // Toggle form for adding new list item
   const [form, setForm] = useState(false);
-// if(item.nested) {
-//   console.log(item.nested.map(a=>a.text))
-// }
-console.log(item.nested)
+
+  const [nestedList, setNestedList] = useState([
+
+
+  ])
+
+  const move = (array, from, to,) => {
+    const def = array[from];
+    array[from] = array[to];
+    array[to] = def;
+    return array
+}
+
+
+
+  const addNestedItem = text => {
+    let currentIds = nestedList.map(data => data.id);
+    let idToBeAdded = 0;
+    while (currentIds.includes(idToBeAdded)) {
+      ++idToBeAdded;
+    }
+
+    const newList = [...nestedList, { id: idToBeAdded, text }];
+    setNestedList(newList);
+  };
+
+  const removeNestedItem = index => {
+    const newList = [...nestedList];
+    newList.splice(index, 1);
+    setNestedList(newList);
+  };
+
+
+
+
+  // Move elements in array up and down
+const UpNested = (id, array) => {
+  const newList = [...nestedList]
+  // setList(newList)
+   setNestedList(move(newList, id, id-1))
+  
+}
+const DownNested = (id, array) => {
+  const newList = [...nestedList]
+  // setList(newList)
+   setNestedList(move(newList, id, id+1))
+
+}
+
+
+
+
+console.log(nestedList.map(a=>a.text))
 return (
     <div >
       
@@ -14,11 +64,11 @@ return (
         {item.text}
         <br/>
          <button onClick={() => removeItem(index)}>Remove</button>{" "}
-        <button onClick={() => setForm(!form)}>Add nested list</button>
-      
-        { id!==0?<button onClick={()=>Up(id, item)} >Up</button>:null} 
-        {id!==list.length-1 ?<button onClick={()=>Down(id, item)}>Down</button>:null}
-<button>show</button>
+        <button onClick={() => setForm(!form)}>Add Sublist</button>
+        
+        { id!==0?<button onClick={()=>Up(id, nestedList)} >Up</button>:null} 
+{id!==list.length-1 ?<button onClick={()=>Down(id, nestedList)}>Down</button>:null}
+{nestedList.length >0 ?<button onClick={()=>setNestedList([])}>Remove Sublist</button>:null}
 
 
        
@@ -29,30 +79,29 @@ return (
  
 
 
-{form ? <AddItem /> : ""}
+{form ? <AddNestedItem  addNestedItem={addNestedItem}/> : ""}
 </ul>
 
-<ul>
-<li> {Array.
-  
-  isArray(item.nested) ? item.nested.map((item, index) => (
-          <div key={index}>
-          <List
-            key={index}
-            index={index}
-            id={list.indexOf(item)}
-            item={item}
-            removeItem={removeItem}
-            Up={Up}
-            Down={Down}
-            list={list}
-            
-          /> 
-          {/* <AddItem addItem={addItem} nestedList={nestedList} /> */}
-          </div>
-        )) :null}
-        </li>
-        </ul>
+{nestedList.length>0 ? nestedList.map((item, index)=> 
+   <ul key={index}>
+  <List 
+  item={item} 
+  index={index} 
+  id={nestedList.indexOf(item)}
+   removeItem={removeNestedItem} 
+   Up={UpNested}
+  Down={DownNested} 
+    list={nestedList}/> </ul>  ):null}
+
+
+
+
+
+ {/*nestedList.length>=0 ? nestedList.map(a=><li>{a.text}</li>):null} 
+
+
+
+ 
      {/* <li> <ul>{Array.isArray(item.nested) ? <List item={item.nested.map(a=>a)} index={index} id={id} removeItem={removeItem} Up={Up} Down={Down} list={list} />:null}</ul>  </li>  */}
 
       

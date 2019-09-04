@@ -11,26 +11,10 @@ function App(props) {
   {id:0,
     text:'random content',
     nested:[{
-      id:0,
       text:'nested content'
-    },
-    {
-      id:1,
-      text:'second nested content',
-      nested:[{
-        id:0,
-        text:'nested content'
-      },
-      {
-        id:1,
-        text:'second nested content',
-        
-      }
-    ]
-  
     }
-  ]
 
+    ]
 
   },
 
@@ -99,6 +83,7 @@ const Down = (id, array) => {
             Down={Down}
             list={list}
             addItem={addItem}
+            
           /> 
           {/* <AddItem addItem={addItem} nestedList={nestedList} /> */}
           </div>
