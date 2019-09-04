@@ -6,7 +6,7 @@ export default function List({ item, index, id, removeItem, Up, Down, list }) {
   const [form, setForm] = useState(false);
 
   const [nestedList, setNestedList] = useState([])
-// console.log(list[id].nested[id])
+
   const move = (array, from, to,) => {
     const def = array[from];
     array[from] = array[to];
@@ -60,7 +60,7 @@ return (
         
         {item.text}
         <br/>
-         <button onClick={() => removeItem(index)}>Remove</button>{" "}
+         <button onClick={() => removeItem(id)}>Remove</button>{" "}
         <button onClick={() => setForm(!form)}>Add Sublist</button>
         
         { id!==0?<button onClick={()=>Up(id, nestedList)} >Up</button>:null} 
@@ -79,8 +79,8 @@ return (
  
  item={item} 
  index={item.id} 
- id={item.id}
- indexof={list.indexOf(item)}
+ id={nestedList.indexOf(item)}
+ indexof={nestedList.indexOf(item)}
   removeItem={removeNestedItem} 
   Up={UpNested}
  Down={DownNested} 

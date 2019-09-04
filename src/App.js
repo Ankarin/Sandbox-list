@@ -8,17 +8,7 @@ function App(props) {
 
   // Data base
   const [list, setList] = useState([
-//   {id:0,
-//     text:'random content',
-//     nested:[
-//       {
-// id:0,
-//       text:'nested content'
-//     }
 
-//     ]
-
-//   },
 
 
   ]);
@@ -44,7 +34,8 @@ function App(props) {
     setList(newList);
   };
 
-  const removeItem = index => {
+  const removeItem = (index, id) => {
+   
     const newList = [...list];
     newList.splice(index, 1);
     setList(newList);
