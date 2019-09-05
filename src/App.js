@@ -5,6 +5,8 @@ import AddItem from "./AddItem";
 import TestMongo from './testMongo';
 import axios from 'axios'
 
+
+
 function App(props) {
 
   // Data base
@@ -28,12 +30,16 @@ function App(props) {
   }, [])
 
 
-// Function to move elevemnts up and down array
   const move = (array, from, to,) => {
-    const def = array[from];
-    array[from] = array[to];
-    array[to] = def;
+    const sortKeyTo = array[from].sortKey;
+   
+
+    array[from].sortKey = array[to].sortKey;
+    
+    array[to].sortKey = sortKeyTo;
+   
     return array
+    
 }
   const addItem = message => {
     let currentIds = list.map(data => data.id);
@@ -41,11 +47,21 @@ function App(props) {
     while (currentIds.includes(idToBeAdded)) {
       ++idToBeAdded;
     }
-
-    const newList = [...list, { id: idToBeAdded, message }];
+    axios.post("http://localhost:3001/list/add", { 
+      
+      sortKey:idToBeAdded,
+      message: message,
+      nested:{}
+      
+      });
+    const newList = [...list, { id: idToBeAdded, sortKey:idToBeAdded, message }];
     setList(newList);
+    
+
+    
+      
   };
-  const removeItem = (index, id) => {
+  const removeItem = (index, sortKey) => {
    
     const newList = [...list];
     newList.splice(index, 1);
@@ -60,7 +76,8 @@ function App(props) {
 
     axios.delete("http://localhost:3001/list/"+list[index]._id, {
       data: {
-        _id: objIdToDelete
+        _id: objIdToDelete,
+        
       }
     });
 
@@ -73,16 +90,15 @@ const Up = (id, array) => {
   const newList = [...list]
   // setList(newList)
    setList(move(newList, id, id-1))
-   console.log(id)
+  
   
 }
 const Down = (id, array) => {
   const newList = [...list]
   // setList(newList)
    setList(move(newList, id, id+1))
-   console.log(id)
+   
 }
-
 
 
 
@@ -92,10 +108,10 @@ const Down = (id, array) => {
     <div className="app">
       <div className="list-item">
      
-        {list.map((item, index) => (
+        {list.sort((a, b)=> a.sortKey - b.sortKey).map((item, index) => (
           <div key={item._id}>
           <List
-            
+            sortKey={item.sortKey}
             index={item.id}
             id={list.indexOf(item)}
             item={item}
@@ -114,7 +130,7 @@ const Down = (id, array) => {
 
         
       </div>
-      
+     
     </div>
   );
 }

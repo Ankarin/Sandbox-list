@@ -12,11 +12,13 @@ router.route('/add').post((req, res) => {
   const message = req.body.message;
   ;
   const nested = Object(req.body.nested);
-
+const sortKey = req.body.sortKey
   const newitem = new item({
     id,
+    sortKey,
     message,
     nested,
+    
     
   });
 

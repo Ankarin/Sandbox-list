@@ -1,0 +1,53 @@
+[33mcommit e22d291e353d29acff57fb383db7673a9e022b3d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Thu Sep 5 12:38:51 2019 +0300
+
+    added functional with database add and delete
+
+[33mcommit 68e5f0ac1120761cd2ca907b3db2eb2b9afee4f0[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Thu Sep 5 09:06:39 2019 +0300
+
+    finished
+
+[33mcommit 5fb58267b29fd428707af69e8b2501b4264a1352[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Wed Sep 4 12:20:15 2019 +0300
+
+    added function to hide form in list when it`s not neaded
+
+[33mcommit f9b935d96c939194a1ddff0ac881161443a77771[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Wed Sep 4 12:03:43 2019 +0300
+
+    App is finished, wait for checking
+
+[33mcommit b13f443ea1660bda5e0488d684dd19584c9dbd23[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Wed Sep 4 11:45:31 2019 +0300
+
+    almsot works, problems with buttins down and up
+
+[33mcommit 88d56bb29a668bf36b0f14bc7624dc7a73409f95[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Wed Sep 4 11:02:41 2019 +0300
+
+    all works but moving nested elements with parent
+
+[33mcommit c314707a978e41463900934e18b0b0c6ada6d85d[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Wed Sep 4 09:45:42 2019 +0300
+
+    commented
+
+[33mcommit 4a7e2f350e4eacb4cf8f4a48e3cbb2d078c3a8ad[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Wed Sep 4 09:32:45 2019 +0300
+
+    add, delete, up, down work, rendering of infinity of nested lists work
+
+[33mcommit 86e1701c646a5709d08d9cfc23cac1724a3b4170[m
+Author: Ankarin <ankarn41k@gmail.com>
+Date:   Tue Sep 3 17:24:25 2019 +0300
+
+    first commit

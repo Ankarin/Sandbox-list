@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const DataSchema = new Schema(
   {
     id:Number,
+    sortKey:Number,
     message: String,
     nested: Object
     

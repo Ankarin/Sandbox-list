@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import AddNestedItem from "./AddNestedItem";
 import './App.scss'
-export default function List({ item, index, id, removeItem, Up, Down, list }) {
+export default function List({ item, sortKey, index, id, removeItem, Up, Down, list }) {
     // Toggle form for adding new list item
   const [form, setForm] = useState(false);
 
   const [nestedList, setNestedList] = useState([])
 
   const move = (array, from, to,) => {
-    const def = array[from];
-    array[from] = array[to];
-    array[to] = def;
+    const sortKeyTo = array[from].sortKey;
+   
+
+    array[from].sortKey = array[to].sortKey;
+    
+    array[to].sortKey = sortKeyTo;
+   
     return array
 }
 
@@ -23,7 +27,7 @@ export default function List({ item, index, id, removeItem, Up, Down, list }) {
       ++idToBeAdded;
     }
 
-    const newList = [...nestedList, { id: idToBeAdded, message }];
+    const newList = [...nestedList, { id: idToBeAdded, sortKey:idToBeAdded, message }];
     setNestedList(newList);
   };
 
@@ -59,6 +63,7 @@ return (
       
         
         {item.message}
+      
         <br/>
          <button onClick={() => removeItem(id)}>Remove</button>{" "}
        <button onClick={() => setForm(!form)}>Add Sublist</button>
@@ -73,7 +78,7 @@ return (
      
 <ul> 
 
-{nestedList.length>0 ? nestedList.map((item, index)=> 
+{nestedList.length>0 ? nestedList.sort((a, b)=>a.sortKey - b.sortKey).map((item, index)=> 
   <li key={item.id}>
  <List 
  
