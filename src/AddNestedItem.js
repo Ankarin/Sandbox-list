@@ -8,6 +8,7 @@ export default function AddNestedItem({ addNestedItem }) {
     if (!value) return;
     addNestedItem(value);
     setValue("");
+  
   };
 
   return (

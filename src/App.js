@@ -51,7 +51,10 @@ function App(props) {
       
       sortKey:idToBeAdded,
       message: message,
-      nested:{}
+      nested:{
+        sortKey:idToBeAdded,
+        message: message,
+      }
       
       });
     const newList = [...list, { id: idToBeAdded, sortKey:idToBeAdded, message }];

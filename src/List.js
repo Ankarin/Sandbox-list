@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios'
 import AddNestedItem from "./AddNestedItem";
 import './App.scss'
 export default function List({ item, sortKey, index, id, removeItem, Up, Down, list }) {
@@ -26,7 +27,13 @@ export default function List({ item, sortKey, index, id, removeItem, Up, Down, l
     while (currentIds.includes(idToBeAdded)) {
       ++idToBeAdded;
     }
-
+    axios.post("http://localhost:3001/list/add", { 
+      
+      sortKey:idToBeAdded,
+      message: message,
+      nested:{}
+      
+      });
     const newList = [...nestedList, { id: idToBeAdded, sortKey:idToBeAdded, message }];
     setNestedList(newList);
   };
