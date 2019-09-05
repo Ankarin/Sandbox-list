@@ -16,14 +16,14 @@ export default function List({ item, index, id, removeItem, Up, Down, list }) {
 
 
 
-  const addNestedItem = text => {
+  const addNestedItem = message => {
     let currentIds = nestedList.map(data => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {
       ++idToBeAdded;
     }
 
-    const newList = [...nestedList, { id: idToBeAdded, text }];
+    const newList = [...nestedList, { id: idToBeAdded, message }];
     setNestedList(newList);
   };
 
@@ -58,7 +58,7 @@ return (
     <div >
       
         
-        {item.text}
+        {item.message}
         <br/>
          <button onClick={() => removeItem(id)}>Remove</button>{" "}
        <button onClick={() => setForm(!form)}>Add Sublist</button>

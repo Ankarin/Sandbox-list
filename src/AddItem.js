@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from 'axios'
 export default function AddItem({ addItem }) {
   const [value, setValue] = useState("");
 
@@ -8,6 +8,11 @@ export default function AddItem({ addItem }) {
     if (!value) return;
     addItem(value);
     setValue("");
+
+
+    axios.post("http://localhost:3001/list/add", { 
+      message: value
+      });
   };
 
   return (
