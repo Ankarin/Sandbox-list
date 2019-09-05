@@ -61,10 +61,7 @@ return (
         {item.text}
         <br/>
          <button onClick={() => removeItem(id)}>Remove</button>{" "}
-        {nestedList.length==0&&!form ?<button onClick={() => setForm(!form)}>Add Sublist</button>: 
-        !form ?<button onClick={()=>setForm(!form)}>show form</button>
-        
-        :<button onClick={()=>setForm(!form)}>hide form</button>}
+       <button onClick={() => setForm(!form)}>Add Sublist</button>
         
         { id!==0?<button onClick={()=>Up(id, nestedList)} >Up</button>:null} 
 {id!==list.length-1 ?<button onClick={()=>Down(id, nestedList)}>Down</button>:null}
